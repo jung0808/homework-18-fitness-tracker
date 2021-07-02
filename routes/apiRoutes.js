@@ -45,7 +45,7 @@ router
   .get("/api/workouts/range", async (req, res) => {
     try {
       const today = new Date(Date.now());
-      const sevenDaysAgo = new Date(Date.now());
+      const sevenDaysAgo = new Date();
       sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
       const range = await Workout.find({
         day: {
@@ -53,17 +53,20 @@ router
           $lte: today,
         },
       });
-      console.log(range);
-      // const response = range.map(el => {
-      //   let t = 0;
-      //   el.exercises.forEach(exercise => {
-      //     d += exercise.duration
-      //   })
-      //   el.totalDuration = t
-      //   return el
-      // })
-      // console.log(response)
-      res.json(range);
+      const response = range.map((workout, i) => {
+        const { id, day, exercises } = workout;
+        const withTotalDuration = {
+          id,
+          day,
+          exercises,
+          totalDuration: workout.exercises.reduce(
+            (acc, cur) => acc + cur.duration,
+            0
+          ),
+        };
+        return withTotalDuration;
+      });
+      res.json(response);
     } catch (error) {
       res.json(error);
     }

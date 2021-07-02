@@ -91,4 +91,31 @@ router.put("/api/workouts/:id", async (req, res) => {
 //     });
 // });
 
+.get("/api/workouts/range", async (req, res) => {
+  try {
+    const today = new Date(Date.now());
+    const sevenDaysAgo = new Date(Date.now());
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const range = await Workout.find({
+      day: {
+        $gte: sevenDaysAgo,
+        $lte: today,
+      },
+    });
+    console.log(range);
+    // const response = range.map(el => {
+    //   let t = 0;
+    //   el.exercises.forEach(exercise => {
+    //     d += exercise.duration
+    //   })
+    //   el.totalDuration = t
+    //   return el
+    // })
+    // console.log(response)
+    res.json(range);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 module.exports = router;
