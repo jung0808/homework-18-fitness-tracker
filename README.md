@@ -33,8 +33,8 @@ Need to contact [jung0808?](https://github.com/jung0808) <br>
 
 # Screenshot of Project
 
-![Screenshot](Fitness-Tracker-1.PNG)
-![Screenshot](Fitness-Tracker-2.PNG)
+![Screenshot](Fitness-Tracker-1.png)
+![Screenshot](Fitness-Tracker-2.png)
 
 ## <br> Attached is also a personal link to my homework assignment #18.
 
@@ -42,4 +42,4 @@ Need to contact [jung0808?](https://github.com/jung0808) <br>
 
 ## https://github.com/jung0808/homework-18-fitness-tracker
 
-## https://quiet-mountain-12172.herokuapp.com/
+## https://quiet-mountain-12172.herokuapp.com/8!
